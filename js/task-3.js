@@ -1,36 +1,12 @@
-class StringBuilder {
-  #value;
-  constructor(initialValue) {
-    this.#value = initialValue;
+const userName = document.querySelector("#name-input");
+userName.addEventListener("input", handleInput);
 
-  }
-  getValue() {
-    return this.#value;
-  }
- 
-padEnd(str) {
-  this.#value += str;
+function handleInput(event) {
+    userName.textContent = event.target.value.trim();
+    event.target.value = event.target.value.trim();
+    const userNameOut = document.querySelector("#name-output");
+    userNameOut.textContent = event.target.value.trim();
+    if (event.target.value.trim() == "") {
+       userNameOut.textContent = "Anonymouse";
+    }
 }
-
-padStart(str) {
-  this.#value = str + this.#value;
-}
-
-padBoth(str) {
-  this.#value = str + this.#value + str;
-}
-
-
-}
-
-
-
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");           //      перевірка методу padStart() ініціалідація 
-console.log(builder.getValue()); // "^." перевірка методу padStart() візуалізація
-builder.padEnd("^");             //       перевірка методу padEnd() ініціалізація 
-console.log(builder.getValue()); // "^.^" перевірка методу padEnd() візуалізація
-builder.padBoth("=");            //        перевірка методу padBoth() ініціалізація
-console.log(builder.getValue()); // "=^.^=" перевірка методу padBoth() візуалізація
