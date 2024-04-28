@@ -29,7 +29,7 @@ const contaner = document.querySelector(".gallery");
 function createMarkup(arr) { 
   return arr.map(item => `
   <li class="image-card" data-id="">
-  <img src="${item.url}" alt="${item.alt}" class="foto-image">
+  <img src="${item.url}" alt="${item.alt}" class="foto-image" width="250" height="250">
   </li>
   `).join("");
 };
