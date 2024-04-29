@@ -4,12 +4,11 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
+
+// creat new element with all  div ( boxes )
 function createBoxes(amount) {
   const divArr = [];
-  if (amount >= 1 &&
-      amount <= 100)
-    {
-        placeCreate.innerHTML = "";        
+         placeCreate.innerHTML = "";        
           for (let i = 0; i < amount; i += 1) {
                divArr.push(`<div class="item"; style="background-color: ${getRandomHexColor()};
                display:block; width:${30 + 10 * i}px;
@@ -17,9 +16,7 @@ function createBoxes(amount) {
            };
         totalElement.value = "";
         return divArr.join("");
-    };
-        return divArr.join("");
-}
+ }
 
 function createGalery(event) { 
   event.preventDefault();
@@ -33,10 +30,15 @@ const placeCreate = document.querySelector("#boxes");
 totalElement.addEventListener("input", createGalery);
 createButton.addEventListener("click", createNew);
 
-function createNew(event)  {
-  placeCreate.insertAdjacentHTML("beforeend", createBoxes(Number(totalElement.value)));
-  totalElement.value = "";
+function createNew(event) {
+  if (Number(totalElement.value) >= 1 &&           
+    Number(totalElement.value) <= 100) {
+    return placeCreate.insertAdjacentHTML("beforeend", createBoxes(Number(totalElement.value))); //add to DOM by 1 
+    totalElement.value = "";
+  };
 };
+
+
 
 destroyButton.addEventListener("click", () => {
   placeCreate.innerHTML = "";
